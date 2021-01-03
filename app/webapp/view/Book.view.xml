@@ -1,0 +1,87 @@
+<mvc:View
+    controllerName="vitorrafael.ui.bookmanagement.controller.Book"
+    xmlns="sap.m"
+    xmlns:semantic="sap.f.semantic"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:layout="sap.ui.layout">
+
+    <semantic:SemanticPage id="book">
+        <semantic:titleHeading>
+            <Title text="{Title}"/>
+        </semantic:titleHeading>
+        <semantic:headerContent>
+            <layout:HorizontalLayout>
+                <layout:VerticalLayout class="sapUiMediumMarginEnd">
+                    <ObjectAttribute 
+                        title="{i18n>Book.Label.ReadingStatus}"
+                        text="{ path: 'ReadingStatus',
+                                formatter: '.formatter.readingStatus'
+                        }"/>
+                    <ObjectAttribute 
+                        title="{i18n>Book.Label.StartDate}"
+                        text="{= ${StartDate} ? 
+                                ${
+                                    path: 'StartDate',
+                                    formatOptions: { style: 'medium' }
+                                }
+                            : '-' }"/>
+                    <ObjectAttribute 
+                        title="{i18n>Book.Label.EndDate}"
+                        text="{= ${EndDate} ?
+                                ${
+                                    path: 'EndDate',
+                                    formatOptions: { style: 'medium' }
+                                }
+                            : '-'
+                        }"/>
+                </layout:VerticalLayout>
+            </layout:HorizontalLayout>
+        </semantic:headerContent>
+        <semantic:content>
+            <layout:VerticalLayout class="sapUiContentPadding" width="100%">
+                <IconTabBar 
+                    id="iconTabBar"
+                    headerBackgroundDesign="Transparent"
+                    select=".onTabSelect"
+                    selectedKey="{bookView>/selectedTab}">
+                    <items>
+                        <IconTabFilter 
+                            id="iconTabFilterBook"
+                            icon="sap-icon://education"
+                            tooltip="{i18n>Book.BookInformation.TabTooltip}"
+                            key="bookDetails">
+                        </IconTabFilter>
+                        <IconTabFilter 
+                            id="iconTabFilterAuthor"
+                            icon="sap-icon://user-edit"
+                            tooltip="{i18n>Book.AuthorInformation.TabTooltip}"
+                            key="authorDetails">
+                        </IconTabFilter>
+                    </items>
+                </IconTabBar>
+            </layout:VerticalLayout>
+        </semantic:content>
+        <semantic:closeAction>
+            <semantic:CloseAction 
+                id="closeBookPage"
+                press="onNavBack"/>
+        </semantic:closeAction>
+
+        <semantic:editAction>
+            <semantic:EditAction 
+                id="editButton"
+                press=".onUpdateButtonPressed"
+                visible="{!bookView>/editMode}"/>
+        </semantic:editAction>
+        <semantic:titleCustomIconActions>
+            <OverflowToolbarButton 
+                id="saveChangesButton"
+                icon="sap-icon://save"
+                text="Save"
+                visible="{bookView>/editMode}"
+                press=".onSaveChangesButtonPressed"/>
+        </semantic:titleCustomIconActions>
+    </semantic:SemanticPage>
+
+</mvc:View>

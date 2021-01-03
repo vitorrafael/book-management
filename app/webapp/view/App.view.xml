@@ -1,0 +1,11 @@
+<mvc:View  
+    controllerName="vitorrafael.ui.bookmanagement.controller.App" 
+    displayBlock="true" 
+    height="100%"
+    xmlns="sap.m" 
+    xmlns:mvc="sap.ui.core.mvc">
+    
+    <App id="idAppControl">
+        <mvc:XMLView viewName="vitorrafael.ui.bookmanagement.view.Booklist"/>
+    </App>
+</mvc:View>

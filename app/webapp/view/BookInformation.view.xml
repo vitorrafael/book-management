@@ -1,0 +1,51 @@
+<mvc:View
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+
+    <VBox>
+        <form:SimpleForm
+            id="SimpleFormBookInfo"
+            layout="ResponsiveGridLayout"
+            width="auto"
+            title="{i18n>Book.BookInformation.Title}"
+            labelSpanL="3"
+			labelSpanM="3"
+			emptySpanL="4"
+			emptySpanM="4"
+			columnsL="1"
+			columnsM="1">
+            <form:content>
+                <Label id="bookFormTitleLabel" text="{i18n>Book.Label.Title}"/>
+                <Input id="bookFormTitle" value="{Title}" editable="false"/>
+
+                <Label id="numberOfPagesLabel" text="{i18n>Book.Label.NumberOfPages}"/>
+                <Input id="numberOfPages" value="{Pages}" editable="false"/>
+
+                <Label id="readingStatusLabel" text="{i18n>Book.Label.ReadingStatus}"/>
+                <Select id="BookReadingStatus" selectedKey="{ReadingStatus}" editable="false">
+                    <items>
+                        <core:Item text="To Be Read" key="ToBeRead"></core:Item>
+                        <core:Item text="Reading" key="Reading"></core:Item>
+                        <core:Item text="Partially Read" key="PartiallyRead"></core:Item>
+                        <core:Item text="Read" key="Read"></core:Item>
+                        <core:Item text="Re-Reading" key="Re-Reading"></core:Item>
+                    </items>
+                </Select>
+                <Label id="startDateLabel" text="{i18n>Book.Label.StartDate}"/>
+                <DatePicker id="BookStartDate" displayFormat="YYYY-MM-dd" valueFormat="YYYY-MM-dd" value="{StartDate}" change="onStartDateChange" editable="false" visible="false"/>
+
+                <Label id="endDateLabel" text="{i18n>Book.Label.EndDate}"/>
+                <DatePicker id="BookEndDate" displayFormat="YYYY-MM-dd" valueFormat="YYYY-MM-dd" value="{EndDate}" change="onEndDateChange" editable="false" visible="false"/>
+                
+                <Label id="publisherNameLabel" text="{i18n>Book.Label.Publisher}"/>
+                <Input id="publisherName" value="{Publisher}" editable="false"/>
+
+                <Label id="languageLabel" text="{i18n>Book.Label.Language}"/>
+                <Input id="language" value="{Language}" editable="false"/>
+            </form:content>
+        </form:SimpleForm>
+    </VBox>
+
+</mvc:View>

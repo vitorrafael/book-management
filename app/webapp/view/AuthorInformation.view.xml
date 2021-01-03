@@ -1,0 +1,36 @@
+<mvc:View
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    controllerName="vitorrafael.ui.bookmanagement.controller.Book">
+    <VBox>
+        <form:SimpleForm
+            id="SimpleFormAuthorInfo"
+            layout="ResponsiveGridLayout"
+            width="auto"
+            title="{i18n>Book.AuthorInformation.Title}"
+			labelSpanL="3"
+			labelSpanM="3"
+			emptySpanL="4"
+			emptySpanM="4"
+			columnsL="2"
+			columnsM="2"
+            >
+            <form:content>
+                <Label id="authorIdLabel" text="{i18n>Author.Label.ID}"/>
+                <Input id="AuthorId" value="{Author_ID}" editable="false" visible="false" showSuggestion="true" suggestionItems="{ path: '/Authors', suspended: false }" liveChange="onAuthorIdChange">
+                   <suggestionItems>
+                        <core:ListItem additionalText="{Name}" text="{ID}"/>
+                   </suggestionItems>
+                </Input>
+
+                <Label id="authorNameLabel" text="{i18n>Author.Label.Name}"/>
+                <Input id="AuthorName" value="{Author/Name}" editable="false"/>
+            
+                <Label id="authorCountryLabel" text="{i18n>Author.Label.Country}"/>
+                <Input id="AuthorCountry" value="{Author/Country}" editable="false"/>
+            </form:content>
+        </form:SimpleForm>
+    </VBox>
+</mvc:View>

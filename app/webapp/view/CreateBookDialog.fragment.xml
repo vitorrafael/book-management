@@ -1,0 +1,69 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.layout">
+    <Dialog id="createBookDialog" title="{i18n>Dialog.CreateBook.Title}">
+        <buttons>
+            <Button id="confirmBookCreation" text="{i18n>Dialog.AddText}" press="onConfirmBookCreation" type="Accept"/>
+            <Button id="cancelBookCreation" text="{i18n>Dialog.CancelText}" press="onCancelBookCreation" type="Reject"/>
+        </buttons>
+        <form:SimpleForm 
+                editable="true" 
+                layout="ResponsiveGridLayout"
+                labelSpanXL="3"
+                labelSpanL="3"
+                labelSpanM="3"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="1"
+                emptySpanL="1"
+                emptySpanM="1"
+                emptySpanS="0"
+                columnsXL="1"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false">
+
+            <Label text="{i18n>Book.Label.Title}"/>
+            <Input id="BookTitle::new" type="Text" value="{Title}" liveChange="onTitleChange"/>
+
+            <Label text="{i18n>Book.Label.NumberOfPages}"/>
+            <Input id="BookPages::new" value="{Pages}" liveChange="onNumberOfPagesChange"/>
+
+            <Label text="{i18n>Book.Label.Language}"/>
+            <Input id="BookLanguage::new" value="{Language}" liveChange="onLanguageChange"/>
+
+            <Label text="{i18n>Book.Label.ReadingStatus}"/>
+            <Select id="BooKReadingStatus::new" selectedKey="{ReadingStatus}">
+                <items>
+                    <core:Item text="To Be Read" key="ToBeRead"></core:Item>
+                    <core:Item text="Reading" key="Reading"></core:Item>
+                    <core:Item text="Partially Read" key="PartiallyRead"></core:Item>
+                    <core:Item text="Read" key="Read"></core:Item>
+                    <core:Item text="Re-Reading" key="Re-Reading"></core:Item>
+                </items>
+            </Select>
+
+            <Label text="{i18n>Book.Label.StartDate}"/>
+            <DatePicker id="BookStartDate::new" displayFormat="YYYY-MM-dd" valueFormat="YYYY-MM-dd" value="{StartDate}" change="onStartDateChange"/>
+
+            <Label text="{i18n>Book.Label.EndDate}"/>
+            <DatePicker id="BookEndDate::new" displayFormat="YYYY-MM-dd" valueFormat="YYYY-MM-dd" value="{EndDate}" change="onEndDateChange"/>
+
+            <Label text="{i18n>Book.Label.Publisher}"/>
+            <Input id="BookPublisher::new" value="{Publisher}" liveChange="onPublisherChange"/>
+ 
+            <Label text="{i18n>Book.Label.Author}"/>
+            <Input id="BookAuthor::new" value="{Author_ID}" showSuggestion="true" suggestionItems="{ path: '/Authors', suspended: false }">
+                    <layoutData>
+                        <layout:GridData span="XL7 L7 M7 S10" />
+                    </layoutData>
+                   <suggestionItems>
+                        <core:ListItem additionalText="{Name}" text="{ID}"/>
+                   </suggestionItems>
+            </Input>
+            <Button icon="sap-icon://add" press="onAddAuthor">
+                <layoutData>
+                    <layout:GridData span="XL1 L1 M1 S2" />
+                </layoutData>
+            </Button>
+        </form:SimpleForm>
+    </Dialog>
+</core:FragmentDefinition>

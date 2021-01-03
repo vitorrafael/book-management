@@ -1,0 +1,48 @@
+<mvc:View xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" controllerName="vitorrafael.ui.bookmanagement.controller.Booklist">
+    <Page id="booklistPage" title="{i18n>Booklist.PageTitle}">
+        <content>
+            <Table id="bookTable" items='{path: "/Books", parameters: { $$updateGroupId: "BookUpdateGroup", $expand: "Author" }}' width="auto" growing="true" growingScrollToLoad="true" class="sapUiResponsiveMargin"> 
+                <headerToolbar>
+                    <Toolbar class="sapUiResponsiveMargin">
+                        <Title text="{i18n>Booklist.TableTitle}"/>
+                        <ToolbarSpacer/>
+                        <SearchField width="50%" search=".onFilterBooks"/>
+                        <Button enabled="true" icon="sap-icon://add" id="createBook" press="onCreateBook" tooltip="{i18n>Dialog.CreateBook.Tooltip}"/>
+                        <dependents>
+                            <core:Fragment fragmentName="vitorrafael.ui.bookmanagement.view.CreateBookDialog" type="XML"/>
+                            <core:Fragment fragmentName="vitorrafael.ui.bookmanagement.view.CreateAuthorDialog" type="XML"/>
+                        </dependents>
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                    <Column id="bookTitleColumn">
+                        <Text text="{i18n>Book.Label.Title}" id="bookTitleColumnTitle"/>
+                    </Column>
+                    <Column id="numberOfPagesColumn">
+                        <Text text="{i18n>Book.Label.NumberOfPages}" id="numberOfPagesColumnTitle"/>
+                    </Column>
+                    <Column id="languageColumn">
+                        <Text text="{i18n>Book.Label.Language}" id="bookLanguageColumnTitle"/>
+                    </Column>
+                    <Column id="authorColumn">
+                        <Text text="{i18n>Book.Label.Author}" id="authorColumnTitle"/>
+                    </Column>
+                    <Column id="readingStatusColumn">
+                        <Text text="{i18n>Book.Label.ReadingStatus}" id="readingStatusTitle"/>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem type="Navigation" press=".onPress">
+                        <cells>
+                            <ObjectIdentifier title="{Title}"/>
+                            <Text text="{Pages}"/>
+                            <Text text="{Language}"/>
+                            <Text text="{Author/Name}"/>
+                            <ObjectStatus text="{ path: 'ReadingStatus', formatter: '.formatter.readingStatus'}" state="{ path: 'ReadingStatus', formatter: '.formatter.readingStatusState' }"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>

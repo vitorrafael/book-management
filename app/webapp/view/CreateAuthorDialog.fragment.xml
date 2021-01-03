@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form">
+    <Dialog id="createAuthorDialog" title="{i18n>Dialog.CreateAuthor.Title}">
+        <buttons>
+            <Button id="confirmAuthorCreation" text="{i18n>Dialog.AddText}" press="onConfirmAuthorCreation" type="Accept"/>
+            <Button id="cancelAuthorCreation" text="{i18n>Dialog.CancelText}" press="onCancelAuthorCreation" type="Reject"/>
+        </buttons>
+
+        <form:SimpleForm editable="true" layout="ResponsiveGridLayout">
+            <Label text="{i18n>Author.Label.Name}"/>
+            <Input id="AuthorName::new" value="{Name}"/>
+
+            <Label text="{i18n>Author.Label.Country}"/>
+            <Input id="AuthorCountry::new" value="{Country}"/>
+        </form:SimpleForm>
+    </Dialog>
+</core:FragmentDefinition>
