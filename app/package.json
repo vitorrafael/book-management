@@ -1,0 +1,30 @@
+{
+  "name": "book-management-app",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "ui5 serve -o index.html"
+  },
+  "dependencies": {
+    "@openui5/sap.m": "1.82.0",
+    "@openui5/sap.ui.core": "1.82.0",
+    "@openui5/themelib_sap_belize": "1.82.0",
+    "@openui5/themelib_sap_fiori_3": "1.82.0",
+    "patch-package": "6.2.2",
+    "shx": "0.3.2"
+  },
+  "devDependencies": {
+    "ui5-middleware-livereload": "0.1.10",
+    "@ui5/cli": "1.14.0"
+  },
+  "ui5": {
+    "dependencies": [
+      "@openui5/sap.m",
+      "@openui5/sap.ui.core",
+      "@openui5/themelib_sap_belize",
+      "@openui5/themelib_sap_fiori_3",
+      "ui5-middleware-livereload"
+    ]
+  },
+  "license": "ISC"
+}

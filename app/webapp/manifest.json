@@ -1,0 +1,126 @@
+{
+    "_version": "1.12.0",
+    "sap.app": {
+        "title": "Book Management",
+        "id": "vitorrafael.ui.bookmanagement",
+        "type": "application",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "dataSources": {
+            "book-management": {
+                "uri": "http://localhost:4004/book-management/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "4.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "vitorrafael.ui.bookmanagement.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "idAppControl"
+        },
+        "dependencies": {
+            "minUI5Version": "1.60.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.ui.layout": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "vitorrafael.ui.bookmanagement.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "book-management",
+                "settings": {
+                    "operationMode": "Server",
+                    "synchronizationMode": "None",
+                    "autoExpandSelect": true,
+                    "groupProperties": {
+                        "BookUpdateGroup": { "submit": "API" },
+                        "AuthorUpdateGroup": { "submit": "API" }
+                    }
+                }
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "vitorrafael.ui.bookmanagement.view",
+                "controlId": "idAppControl",
+                "controlAggregation": "pages",
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "booklist",
+                    "target": "booklist"
+                },
+                {
+                    "pattern": "Books(ID={bookID}):?query:",
+                    "name": "book",
+                    "target": "book"
+                }
+            ],
+            "targets": {
+                "booklist": {
+                    "viewName": "Booklist",
+                    "viewId": "booklist",
+                    "viewLevel": 1,
+                    "title": "{i18n>Booklist.PageTitle}"
+                },
+                "book": {
+                    "viewName": "Book",
+                    "viewId": "book",
+                    "viewLevel": 2,
+                    "title": "{i18n>Book.PageTitle}"
+                },
+                "bookDetails": {
+                    "viewName": "BookInformation",
+                    "viewId": "bookInfoId",
+                    "parent": "book",
+                    "controlId": "iconTabFilterBook",
+                    "controlAggregation": "content"
+                },
+                "authorDetails": {
+                    "viewName": "AuthorInformation",
+                    "viewId": "authorInfoId",
+                    "parent": "book",
+                    "controlId": "iconTabFilterAuthor",
+                    "controlAggregation": "content"
+                }
+            }
+        }
+    }
+}
