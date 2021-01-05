@@ -44,9 +44,7 @@ sap.ui.define([
             var oAuthorsListBinding = this.byId("BookAuthor::new").getBinding("suggestionItems");
             
             if(this._oCurrentCreateBookContext === undefined) {
-                var oContext = this.byId("bookTable").getBinding("items").create({
-                    ID: parseInt(Math.random() * 1000000000, 10),
-                });
+                var oContext = this.byId("bookTable").getBinding("items").create({});
             } else {
                 var oContext = this._oCurrentCreateBookContext;
             }
@@ -110,11 +108,7 @@ sap.ui.define([
                 $$updateGroupId: "AuthorUpdateGroup"
             });
 
-            var oContext = oAuthorsListBinding.create({
-                ID: parseInt(Math.random() * 1000000000, 10)
-            })
-            
-            var that = this;
+            var oContext = oAuthorsListBinding.create({});
             
             this.byId("createBookDialog").close()
 
