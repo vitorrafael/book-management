@@ -1,0 +1,27 @@
+{
+  "name": "book-management",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^4",
+    "@sap/hana-client": "^2.7.16",
+    "@sap/xsenv": "^3.1.0",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "sqlite3": "^5"
+  },
+  "scripts": {
+    "start": "cds run"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sql"
+      }
+    }
+  }
+}
