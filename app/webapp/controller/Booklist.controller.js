@@ -186,7 +186,7 @@ sap.ui.define([
             if(!Validator.isValidDateFormat(oEndDate.getValue())) {
                 this._setValueState(oEndDate, ValueState.Error, oResourceBundle.getText("Validation.InvalidDateValue"));
             } else if(oEndDate.getValue() !== "" && oStartDate.getValue() === "") {
-                this._setValueState(oEndDate, ValueState.Error, oResourceBundle.getText("Validation.StartDateEmpty"));
+                this._setValueState(oStartDate, ValueState.Error, oResourceBundle.getText("Validation.StartDateEmpty"));
                 oStartDate.setRequired(true);
             } else if(!Validator.isValidDates(oStartDate.getValue(), oEndDate.getValue())) {
                 this._setValueState(oStartDate, ValueState.Error, oResourceBundle.getText("Validation.InvalidStartDate"));
