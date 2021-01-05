@@ -9,6 +9,7 @@
     "@sap/cds": "^4",
     "@sap/hana-client": "^2.7.16",
     "@sap/xsenv": "^3.1.0",
+    "cf-nodejs-logging-support": "^6.6.0",
     "express": "^4"
   },
   "devDependencies": {
@@ -20,7 +21,11 @@
   "cds": {
     "requires": {
       "db": {
-        "kind": "sql"
+        "kind": "sqlite",
+        "model": "*",
+        "credentials": {
+          "database": "db/book-management.db"
+        }
       }
     }
   }
