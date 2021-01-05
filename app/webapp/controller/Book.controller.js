@@ -72,8 +72,7 @@ sap.ui.define([
                 this._updateAuthorFormProperties();
             }
             
-            var sGroupID = "BookUpdateGroup";
-            this.getModel().submitBatch(sGroupID)
+            this.getModel().refresh();
 
             this.byId("saveChangesButton").setVisible(false);
             this.byId("editButton").setVisible(true);
