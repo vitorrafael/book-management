@@ -30,7 +30,7 @@ sap.ui.define([
             var sQuery = oEvent.getParameter("query");
 
             if(sQuery) {
-                aFilter.push(new Filter("title", FilterOperator.Contains, sQuery));
+                aFilter.push(new Filter("Title", FilterOperator.Contains, sQuery));
             }
 
             var oTable = this.byId("bookTable");
