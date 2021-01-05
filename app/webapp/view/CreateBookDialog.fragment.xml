@@ -42,10 +42,10 @@
             </Select>
 
             <Label text="{i18n>Book.Label.StartDate}"/>
-            <DatePicker id="BookStartDate::new" displayFormat="YYYY-MM-dd" valueFormat="YYYY-MM-dd" value="{StartDate}" change="onStartDateChange"/>
+            <DatePicker id="BookStartDate::new" displayFormat="YYYY-MM-dd" value="{StartDate}" change="onStartDateChange"/>
 
             <Label text="{i18n>Book.Label.EndDate}"/>
-            <DatePicker id="BookEndDate::new" displayFormat="YYYY-MM-dd" valueFormat="YYYY-MM-dd" value="{EndDate}" change="onEndDateChange"/>
+            <DatePicker id="BookEndDate::new" displayFormat="YYYY-MM-dd" value="{EndDate}" change="onEndDateChange"/>
 
             <Label text="{i18n>Book.Label.Publisher}"/>
             <Input id="BookPublisher::new" value="{Publisher}" liveChange="onPublisherChange"/>
