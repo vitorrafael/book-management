@@ -7,7 +7,7 @@ class BookService {
         
         req.data.ID = parseInt(Math.random() * 1000000000, 10);
 
-        BookValidator.ValidateData(req.data)
+        await BookValidator.ValidateData(req.data)
 
         return await cds.tx(req);
     }    

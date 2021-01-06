@@ -1,4 +1,5 @@
 const CustomError = require("./CustomError");
+const cds = require("@sap/cds");
 
 const ALLOWED_READING_STATUSES = new Set([
     "Read",
@@ -12,13 +13,14 @@ BAD_REQUEST = 400;
 
 class BookValidator {
 
-    static ValidateData(data) {
+    static async ValidateData(data) {
         BookValidator.ValidateTitle(data.Title) &&
         BookValidator.ValidateDates(data.StartDate, data.EndDate) &&
         BookValidator.ValidateReadingStatus(data.ReadingStatus) &&
         BookValidator.ValidateNumberOfPages(data.Pages) &&
         BookValidator.ValidatePublisher(data.Publisher) &&
         BookValidator.ValidateLanguage(data.Language);
+        await BookValidator.ValidateAuthorExists(data.Author_ID);
     }
 
     static ValidateTitle(title) {
@@ -58,6 +60,13 @@ class BookValidator {
     static ValidateLanguage(language) {
         if(language === undefined || language === null || language === "") {
             throw new CustomError("Bad Request", "Invalid Language", BAD_REQUEST);
+        }
+    }
+
+    static async ValidateAuthorExists(authorID) {
+        const authorExists = await cds.read("book.management.Authors").where({ID: authorID});
+        if(authorExists.length === 0) {
+            throw new CustomError(500, "Author does not exist", "Invalid Author");
         }
     }
 }

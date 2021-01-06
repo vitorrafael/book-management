@@ -15,6 +15,11 @@ module.exports = function(server) {
     });
 
     server.before("CREATE", "Authors", async req => {
-        await AuthorService.CreateAuthor(req);
+        try {
+            await AuthorService.CreateAuthor(req);
+        } catch(error) {
+            log.error((error & error.stack) ? error.stack : error);
+            req.reject(error.status || 500, error);
+        }
     });
 };
