@@ -37,7 +37,7 @@
                     <core:Item text="Reading" key="Reading"></core:Item>
                     <core:Item text="Partially Read" key="PartiallyRead"></core:Item>
                     <core:Item text="Read" key="Read"></core:Item>
-                    <core:Item text="Re-Reading" key="Re-Reading"></core:Item>
+                    <core:Item text="Re-Reading" key="ReReading"></core:Item>
                 </items>
             </Select>
 
